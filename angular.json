@@ -30,9 +30,22 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+                "src/assets/css/app.css"
             ],
-            "scripts": []
+            "scripts": [
+                "node_modules/apexcharts/dist/apexcharts.min.js",
+                "node_modules/swiper/swiper-bundle.min.js",
+                "node_modules/easymde/dist/easymde.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+                "apexcharts",
+                "bezier-easing",
+                "sweetalert2",
+                "file-saver",
+                "angular2-text-mask",
+                "quill",
+                "ng2-flatpickr"
+            ]
           },
           "configurations": {
             "production": {
