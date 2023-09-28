@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppService } from 'src/app/core/services/app.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-authlayout',
+  standalone: true,
+  imports: [CommonModule,RouterModule],
   templateUrl: './authlayout.component.html',
-  styleUrls: ['./authlayout.component.scss']
+  styleUrls: ['./authlayout.component.css']
 })
-export class AuthlayoutComponent implements OnInit {
-
+export class AuthlayoutComponent implements OnInit,OnDestroy {
   store:any;
   showTopButton = false;
 
@@ -52,5 +55,4 @@ export class AuthlayoutComponent implements OnInit {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
   }
-
 }

@@ -2,14 +2,20 @@
     <div class="panel m-6 w-full max-w-lg sm:w-[480px]">
         <h2 class="mb-3 text-2xl font-bold">Sign In</h2>
         <p class="mb-7">Enter your email and password to login</p>
-        <form class="space-y-5">
-            <div>
+        <form class="space-y-5" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+            <div [ngClass]="isLoginFormSubmitted ? loginForm.controls['email'].errors ? 'has-error' : 'has-success' : ''">
                 <label for="email">Email</label>
-                <input id="email" type="email" class="form-input" placeholder="Enter Email" />
+                <input id="email" type="email" class="form-input" placeholder="Enter Email" formControlName="email" />
+                <ng-container *ngFor="let validation of validationGroup.email">
+                    <p class="mt-1 text-danger"*ngIf="isLoginFormSubmitted && loginForm.controls['email'].invalid && loginForm.controls['email'].hasError(validation.type)">{{validation.message}}</p>
+                </ng-container>
             </div>
-            <div>
+            <div [ngClass]="isLoginFormSubmitted ? loginForm.controls['password'].errors ? 'has-error' : 'has-success' : ''">
                 <label for="password">Password</label>
-                <input id="password" type="password" class="form-input" placeholder="Enter Password" />
+                <input id="password" type="password" class="form-input" placeholder="Enter Password" formControlName="password" />
+                <ng-container *ngFor="let validation of validationGroup.password">
+                    <p class="mt-1 text-danger"*ngIf="isLoginFormSubmitted && loginForm.controls['password'].invalid && loginForm.controls['password'].hasError(validation.type)">{{validation.message}}</p>
+                </ng-container>
             </div>
             <div>
                 <label class="cursor-pointer">
@@ -17,13 +23,13 @@
                     <span class="text-white-dark">Subscribe to weekly newsletter</span>
                 </label>
             </div>
-            <button type="button" class="btn btn-primary w-full" (click)="router.navigate(['/register'])">SIGN IN</button>
+            <button type="submit" class="btn btn-primary w-full">SIGN IN</button>
         </form>
         <div
             class="relative my-7 h-5 text-center before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-[#ebedf2] dark:before:bg-[#253b5c]"
         >
             <div class="relative z-[1] inline-block bg-white px-2 font-bold text-white-dark dark:bg-[#0e1726]"><span>OR</span></div>
         </div>
-        <p class="text-center">Dont't have an account ? <a routerLink="/register" class="font-bold text-primary hover:underline">Sign Up</a></p>
+        <p class="text-center">Dont't have an account ? <a [routerLink]="['/register']" class="font-bold text-primary hover:underline">Sign Up</a></p>
     </div>
 </div>

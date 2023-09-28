@@ -9,7 +9,9 @@ import { $themeConfig } from '../utils/theme.config';
 export class AppService {
   storeData: any;
 
-  constructor(public translate: TranslateService, public store: Store<any>) { }
+  constructor(public translate: TranslateService, public store: Store<any>) {
+    this.initStoreData();
+  }
 
   initStoreData()
   {
@@ -34,7 +36,7 @@ export class AppService {
 
     val = localStorage.getItem('i18n_locale'); // en, da, de, el, es, fr, hu, it, ja, pl, pt, ru, sv, tr, zh
     val = val || $themeConfig.locale;
-
+    
     const list = this.storeData.languageList;
     const item = list.find((item: any) => item.code === val);
     if (item) {
@@ -85,7 +87,7 @@ export class AppService {
   }
 
   changeAnimation(type = 'add') {
-      if (this.storeData.animation) {
+      if (this.storeData?.animation) {
           const ele: any = document.querySelector('.animation');
           if (type === 'add') {
               ele?.classList.add('animate__animated');
