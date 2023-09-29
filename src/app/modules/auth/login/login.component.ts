@@ -49,11 +49,12 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.isLoginFormSubmitted = true;
-    console.log(this.loginForm.controls['email'].errors)
-    if(this.loginForm.valid)
-    {
-      console.log("Form submitted successfully");
-    }
+    // this.isLoginFormSubmitted = true;
+    // console.log(this.loginForm.controls['email'].errors)
+    // if(this.loginForm.valid)
+    // {
+      
+    // }
+    this.router.navigate(['/app']);
   }
 }
