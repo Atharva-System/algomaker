@@ -5,13 +5,15 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 // perfect-scrollbar
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { slideDownUp } from '../../animations/slideDownUp.animation';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [CommonModule,TranslateModule,NgScrollbarModule],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
+  animations: [slideDownUp]
 })
 export class SidebarComponent implements OnInit {
   active = false;

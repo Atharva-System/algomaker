@@ -5,13 +5,21 @@ import { Store } from '@ngrx/store';
 import { NavigationEnd, Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { MenuModule } from 'headlessui-angular';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,TranslateModule],
+  imports: [CommonModule,TranslateModule,MenuModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  animations: [
+    trigger('toggleAnimation', [
+        transition(':enter', [style({ opacity: 0, transform: 'scale(0.95)' }), animate('100ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))]),
+        transition(':leave', [animate('75ms', style({ opacity: 0, transform: 'scale(0.95)' }))]),
+    ]),
+  ],
 })
 export class HeaderComponent implements OnInit {
   store: any;
@@ -96,12 +104,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.router.events.subscribe((event)=>{
-        if(event instanceof NavigationEnd)
-        {
-          
+    this.setActiveDropdown();
+    this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+            this.setActiveDropdown();
         }
-      });
+    });
   }
 
   setActiveDropdown(){
