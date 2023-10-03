@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 // perfect-scrollbar
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { slideDownUp } from '../../animations/slideDownUp.animation';
@@ -10,7 +10,7 @@ import { slideDownUp } from '../../animations/slideDownUp.animation';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule,TranslateModule,NgScrollbarModule],
+  imports: [CommonModule,TranslateModule,NgScrollbarModule,RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
   animations: [slideDownUp]
