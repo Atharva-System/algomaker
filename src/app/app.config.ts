@@ -30,6 +30,14 @@ import { SortablejsModule } from '@dustfoundation/ngx-sortablejs';
 
 // modal
 import { ModalModule } from 'angular-custom-modal';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
+
+const config: SocketIoConfig = {
+	url: environment.socketUrl, // socket server url;
+	options: {
+	}
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),provideStore({index: indexReducer}),
@@ -48,6 +56,7 @@ export const appConfig: ApplicationConfig = {
   importProvidersFrom(
     NgScrollbarModule
   ),
+  importProvidersFrom(SocketIoModule.forRoot(config)),
   importProvidersFrom(SortablejsModule),
   importProvidersFrom(ModalModule),
   importProvidersFrom(HighlightModule),

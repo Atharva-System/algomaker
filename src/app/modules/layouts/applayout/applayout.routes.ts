@@ -5,6 +5,12 @@ export const AppRoutes:Routes = [
     {
         path:'',
         pathMatch:'prefix',
-        component: ApplayoutComponent
+        component: ApplayoutComponent,
+        children:[
+            {
+                path:'',
+                loadChildren: () => import("../../pages/dashboard/dashboard.routes").then(m => m.dashboardRoutes)
+            }
+        ]
     }
 ]
