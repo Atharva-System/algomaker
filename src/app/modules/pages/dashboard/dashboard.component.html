@@ -1,11 +1,7 @@
-<h1>Paper Trading</h1>
-<p>Time: <app-clock></app-clock></p>
-<div class="container">
-    <div class="card">
-        Nifty Ticks : {{ niftyTicker }}
-    </div>
-    <div class="card">
-        Banknifty Ticks : {{ bankniftyTicker }}
-    </div>
+<div class="mb-5">
+    <h1 class="text-2xl font-thin font-nunito">Paper Trading</h1>
+    <p class="text-lg font-thin">Time: <app-clock></app-clock>, Nifty Ticks : {{ niftyTicker }}, Banknifty Ticks : {{ bankniftyTicker }}</p>
 </div>
-
+<div class="grid grid-cols-5 gap-5 xl:grid-cols-5">
+    <app-stretagybox *ngFor="let strategy of strategies" [strategy]="strategy"></app-stretagybox>
+</div>
