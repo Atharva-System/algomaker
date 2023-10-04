@@ -10,6 +10,10 @@ export const AppRoutes:Routes = [
             {
                 path:'',
                 loadChildren: () => import("../../pages/dashboard/dashboard.routes").then(m => m.dashboardRoutes)
+            },
+            {
+                path:'Stragtegy/:name',
+                loadChildren: () => import("../../pages/startegy-detail/strategy-detail.routes").then(m => m.startegyDetailRoutes)
             }
         ]
     }
