@@ -33,7 +33,7 @@ export class ClockComponent implements OnInit,OnDestroy {
       clearInterval(this.intervalId);
       if(this.subscription)
       {
-        this.subscription.unsubcribe();
+        this.subscription.unsubcribe;
       }
   }
 }

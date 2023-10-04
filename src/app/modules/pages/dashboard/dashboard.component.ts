@@ -5,7 +5,7 @@ import { ClockComponent } from 'src/app/shared/components/clock/clock.component'
 import { Subscription } from 'rxjs';
 import { StretagyboxComponent } from 'src/app/shared/components/stretagybox/stretagybox.component';
 import { IStrategy } from 'src/app/core/models/stretag.model';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit,OnDestroy {
   bankniftyTicker = 0;
   strategies:IStrategy[] = [];
 
-  constructor(private api:ApiCallService){
+  constructor(private api:ApiCallService,private router:Router){
     this.strategies = [
       {
         name:'STG1',
@@ -111,8 +111,12 @@ export class DashboardComponent implements OnInit,OnDestroy {
       )
   }
 
+  navigateToStrategyDetail(name:string){
+    this.router.navigate(['/app/Stragtegy',name])
+  }
+
   ngOnDestroy(): void {
-      this.subs.forEach(subscription => { subscription.unsubscribe() });
+      this.subs.forEach(subscription => { subscription.unsubscribe });
   }
 
 }
