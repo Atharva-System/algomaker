@@ -2,6 +2,6 @@
     <h1 class="text-2xl font-thin font-nunito">Paper Trading</h1>
     <p class="text-lg font-thin">Time: <app-clock></app-clock>, Nifty Ticks : {{ niftyTicker }}, Banknifty Ticks : {{ bankniftyTicker }}</p>
 </div>
-<div class="grid grid-cols-5 gap-5 xl:grid-cols-5">
-    <app-stretagybox *ngFor="let strategy of strategies" [strategy]="strategy" (click)="navigateToStrategyDetail(strategy.name)"></app-stretagybox>
+<div class="grid grid-cols-5 gap-5 xl:grid-cols-5" *ngrxLet="strategies$ as stgs">
+    <app-stretagybox *ngFor="let strategy of stgs" [strategy]="strategy" (click)="navigateToStrategyDetail(strategy.fullname)"></app-stretagybox>
 </div>
