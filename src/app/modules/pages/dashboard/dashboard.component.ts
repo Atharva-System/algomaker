@@ -90,22 +90,22 @@ export class DashboardComponent implements OnInit,OnDestroy {
       this.subs.push(
         this.api.getInitialData().subscribe(data=>{
           this.ticks = data;
-          if(this.ticks['256265'] != undefined)
-            this.niftyTicker = this.ticks['256265'];
-          
-          if(this.ticks['260105'] != undefined)
-            this.bankniftyTicker = this.ticks['260105'];
+          if(this.ticks['nifty'] != undefined)
+            this.niftyTicker = this.ticks['nifty'];
+
+          if(this.ticks['bank_nifty'] != undefined)
+            this.bankniftyTicker = this.ticks['bank_nifty'];
         })
       );
 
       this.subs.push(
         this.api.getUpdatedData().subscribe(data=>{
           this.ticks = data;
-          if(this.ticks['256265'] != undefined)
-            this.niftyTicker = this.ticks['256265'];
-          
-          if(this.ticks['260105'] != undefined)
-            this.bankniftyTicker = this.ticks['260105'];
+          if(this.ticks['nifty'] != undefined)
+            this.niftyTicker = this.ticks['nifty'];
+
+          if(this.ticks['bank_nifty'] != undefined)
+            this.bankniftyTicker = this.ticks['bank_nifty'];
         })
       )
   }
