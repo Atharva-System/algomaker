@@ -1,4 +1,4 @@
-<div class="panel cursor-pointer flex justify-between items-center" *ngIf="strategy != undefined && strategy.fullname != undefined && strategy.total != undefined">
+<div class="panel cursor-pointer flex justify-between items-center" *ngIf="strategy != undefined && strategy.fullname != undefined">
     <div class="flex items-center font-semibold">
         
         <div class="ltr:ml-2 rtl:mr-2">
@@ -9,6 +9,6 @@
         </div>
     </div>
     <div class="flex items-center justify-between text-base font-bold">
-        <span class="text-lg font-normal text-danger" [ngClass]="{'text-success':strategy.total > 0,'text-danger':strategy.total < 0,'text-dark-light':(strategy.total == 0)}">{{ strategy.total }}</span>
+        <span class="text-lg font-normal text-danger" [ngClass]="{'text-success':strategy.total! > 0,'text-danger':strategy.total! < 0,'text-dark-light':(strategy.total == 0)}">{{ (strategy.total == null || strategy.total == undefined) ? 0 :strategy.total! }}</span>
     </div>
 </div>

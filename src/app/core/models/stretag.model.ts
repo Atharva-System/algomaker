@@ -9,7 +9,7 @@ export interface IStrategy{
     platform:string;
     positions:IPosition[];
     strategy:string;
-    total: number;
+    total: number | null;
     totalAbs: number;
     username:string;
 }
@@ -22,7 +22,7 @@ export class Strategy implements IStrategy {
     platform:string;
     positions:IPosition[];
     strategy:string;
-    total: number;
+    total: number | null;
     totalAbs: number;
     username:string;
     constructor(){
