@@ -7,6 +7,7 @@ import { LetDirective } from '@ngrx/component';
 import { StrategyService } from 'src/app/core/services/strategy/strategy.service';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { CardBodyComponent } from 'src/app/shared/components/card/card-body/card-body.component';
+import { IOrder } from 'src/app/core/models/order.model';
 
 @Component({
   selector: 'app-startegy-detail',
@@ -18,6 +19,7 @@ import { CardBodyComponent } from 'src/app/shared/components/card/card-body/card
 export class StartegyDetailComponent implements OnInit {
   strategy$:Observable<IStrategy> = new Observable<IStrategy>();
   strategyName:string = '';
+  isOrderBookOpened:boolean = false;
 
   constructor(private route:ActivatedRoute,private service:StrategyService){
     this.route.params.subscribe(res => {
@@ -37,5 +39,11 @@ export class StartegyDetailComponent implements OnInit {
     })
   }
 
+  getTotalOrders(orders:IOrder[]): number{
+    return orders.length;
+  }
 
+  toggleOrderBook(){
+    this.isOrderBookOpened = !this.isOrderBookOpened
+  }
 }
