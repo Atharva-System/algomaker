@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { Store } from '@ngrx/store';
 import { NavigationEnd, Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
@@ -11,13 +11,18 @@ import { MenuModule } from 'headlessui-angular';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,TranslateModule,MenuModule],
+  imports: [CommonModule, MenuModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   animations: [
     trigger('toggleAnimation', [
-        transition(':enter', [style({ opacity: 0, transform: 'scale(0.95)' }), animate('100ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))]),
-        transition(':leave', [animate('75ms', style({ opacity: 0, transform: 'scale(0.95)' }))]),
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('100ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate('75ms', style({ opacity: 0, transform: 'scale(0.95)' })),
+      ]),
     ]),
   ],
 })
@@ -28,13 +33,15 @@ export class HeaderComponent implements OnInit {
     {
       id: 1,
       profile: 'user-profile.jpeg',
-      message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
+      message:
+        '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
       time: '45 min ago',
     },
     {
       id: 2,
       profile: 'profile-34.jpeg',
-      message: '<strong class="text-sm mr-1">AdamNolan</strong>mentioned you to <strong>UX Basics</strong>',
+      message:
+        '<strong class="text-sm mr-1">AdamNolan</strong>mentioned you to <strong>UX Basics</strong>',
       time: '9 hours ago',
     },
     {
@@ -52,50 +59,47 @@ export class HeaderComponent implements OnInit {
       ),
       title: 'Congratulations!',
       message: 'Your OS has been updated',
-      time: '1hr'
+      time: '1hr',
     },
     {
-        id: 2,
-        image: this.sanitizer.bypassSecurityTrustHtml(
-            `<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>`
-        ),
-        title: 'Did you know?',
-        message: 'You can switch between artboards.',
-        time: '2hr',
+      id: 2,
+      image: this.sanitizer.bypassSecurityTrustHtml(
+        `<span class="grid place-content-center w-9 h-9 rounded-full bg-info-light dark:bg-info text-info dark:text-info-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>`
+      ),
+      title: 'Did you know?',
+      message: 'You can switch between artboards.',
+      time: '2hr',
     },
     {
-        id: 3,
-        image: this.sanitizer.bypassSecurityTrustHtml(
-            `<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"> <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>`
-        ),
-        title: 'Something went wrong!',
-        message: 'Send Reposrt',
-        time: '2days',
+      id: 3,
+      image: this.sanitizer.bypassSecurityTrustHtml(
+        `<span class="grid place-content-center w-9 h-9 rounded-full bg-danger-light dark:bg-danger text-danger dark:text-danger-light"> <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>`
+      ),
+      title: 'Something went wrong!',
+      message: 'Send Reposrt',
+      time: '2days',
     },
     {
-        id: 4,
-        image: this.sanitizer.bypassSecurityTrustHtml(
-            `<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>`
-        ),
-        title: 'Warning',
-        message: 'Your password strength is low.',
-        time: '5days',
+      id: 4,
+      image: this.sanitizer.bypassSecurityTrustHtml(
+        `<span class="grid place-content-center w-9 h-9 rounded-full bg-warning-light dark:bg-warning text-warning dark:text-warning-light"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">    <circle cx="12" cy="12" r="10"></circle>    <line x1="12" y1="8" x2="12" y2="12"></line>    <line x1="12" y1="16" x2="12.01" y2="16"></line></svg></span>`
+      ),
+      title: 'Warning',
+      message: 'Your password strength is low.',
+      time: '5days',
     },
   ];
 
   constructor(
-    public translate: TranslateService,
     public storeData: Store<any>,
-    public router:Router,
-    public appSettings:AppService,
+    public router: Router,
+    public appSettings: AppService,
     private sanitizer: DomSanitizer
-  )
-  {
+  ) {
     this.initStore();
   }
 
-  initStore()
-  {
+  initStore() {
     this.storeData
       .select((d) => d.index)
       .subscribe((d) => {
@@ -106,26 +110,28 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.setActiveDropdown();
     this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-            this.setActiveDropdown();
-        }
+      if (event instanceof NavigationEnd) {
+        this.setActiveDropdown();
+      }
     });
   }
 
-  setActiveDropdown(){
-    const selector = document.querySelector('ul.horizontal-menu a[routerLink="' + window.location.pathname + '"]');
-    if(selector)
-    {
+  setActiveDropdown() {
+    const selector = document.querySelector(
+      'ul.horizontal-menu a[routerLink="' + window.location.pathname + '"]'
+    );
+    if (selector) {
       selector.classList.add('active');
-      const all:any = document.querySelectorAll('ul.horizontal-menu .nav-link.active');
-      for(let i = 0; i < all.length; i++)
-      {
+      const all: any = document.querySelectorAll(
+        'ul.horizontal-menu .nav-link.active'
+      );
+      for (let i = 0; i < all.length; i++) {
         all[0]?.classList.remove('active');
       }
-      const ul:any = selector.closest('ul.sub-menu');
-      if(ul){
+      const ul: any = selector.closest('ul.sub-menu');
+      if (ul) {
         let ele: any = ul.closest('li.menu').querySelectorAll('.nav-link');
-        if(ele){
+        if (ele) {
           ele = ele[0];
           setTimeout(() => {
             ele?.classList.add('active');
@@ -134,23 +140,12 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-  
-  removeNotification(value:number){
+
+  removeNotification(value: number) {
     this.notifications = this.notifications.filter((d) => d.id !== value);
   }
 
-  removeMessage(value:number){
+  removeMessage(value: number) {
     this.messages = this.messages.filter((d) => d.id !== value);
-  }
-
-  changeLanguage(item:any){
-    this.translate.use(item.code);
-    this.appSettings.toggleLanguage(item);
-    if(this.store.locale?.toLowerCase() === 'ae'){
-      this.storeData.dispatch({type:'toggleRTL', payload: 'rtl'});
-    } else {
-      this.storeData.dispatch({type: 'toggleRTL', payload: 'ltr'});
-    }
-    window.location.reload();
   }
 }

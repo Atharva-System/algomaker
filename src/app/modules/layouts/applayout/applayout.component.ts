@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateService } from '@ngx-translate/core';
+
 import { Store } from '@ngrx/store';
 import { AppService } from 'src/app/core/services/app.service';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
@@ -11,26 +11,26 @@ import { SidebarComponent } from 'src/app/shared/components/sidebar/sidebar.comp
 @Component({
   selector: 'app-applayout',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './applayout.component.html',
-  styleUrls: ['./applayout.component.css']
+  styleUrls: ['./applayout.component.css'],
 })
 export class ApplayoutComponent implements OnInit {
-  store:any;
+  store: any;
   showTopButton = false;
   headerClass = '';
 
   constructor(
-    public translate: TranslateService,
     public storeData: Store<any>,
-    private service:AppService,
-    private router:Router
-  ){
+    private service: AppService,
+    private router: Router
+  ) {
     this.initStore();
   }
 
@@ -38,40 +38,43 @@ export class ApplayoutComponent implements OnInit {
     this.initAnimation();
     this.toggleLoader();
     window.addEventListener('scroll', () => {
-      if(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50){
+      if (
+        document.body.scrollTop > 50 ||
+        document.documentElement.scrollTop > 50
+      ) {
         this.showTopButton = true;
       } else {
         this.showTopButton = false;
       }
     });
   }
-  
+
   ngOnDestroy(): void {
-    window.removeEventListener('scroll',() => {});
+    window.removeEventListener('scroll', () => {});
   }
 
-  initAnimation(){
+  initAnimation() {
     this.service.changeAnimation();
     this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd){
+      if (event instanceof NavigationEnd) {
         this.service.changeAnimation();
       }
     });
 
-    const ele:any = document.querySelector('.animation');
+    const ele: any = document.querySelector('.animation');
     ele.addEventListener('animationend', () => {
       this.service.changeAnimation('remove');
     });
   }
 
-  toggleLoader(){
-    this.storeData.dispatch({type:'toggleMainLoader', payload: true});
+  toggleLoader() {
+    this.storeData.dispatch({ type: 'toggleMainLoader', payload: true });
     setTimeout(() => {
-      this.storeData.dispatch({type:'toggleMainLoader', payload: false});
-    },500);
+      this.storeData.dispatch({ type: 'toggleMainLoader', payload: false });
+    }, 500);
   }
 
-  async initStore(){
+  async initStore() {
     this.storeData
       .select((d) => d.index)
       .subscribe((d) => {
