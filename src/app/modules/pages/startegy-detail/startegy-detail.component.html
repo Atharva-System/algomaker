@@ -1,32 +1,38 @@
-<ng-container *ngrxLet="strategy$ as strategy">
-    <ng-container *ngIf="strategy != undefined && strategy.fullname != undefined">
+<app-card class="w-full h-full">
+    <app-card-body>
 
-    <h2 class="text-xl font-bold">
-        Net Positions: {{ strategy.fullname }}
-    </h2>
-    <table class="responsive-table bg-white-dark text-dark text-base dark:text-white-light">
-        <thead>
-            <tr>
-                <th>Symbol</th>
-                <th>LTP</th>
-                <th>MTM</th>
-                <th>Qty Stretagy</th>
-                <th>Buy</th>
-                <th>Sell</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let posisition of strategy.positions">
-                <td>
-                    {{ posisition.tradingsymbol }}
-                </td>
-                <td>{{ posisition.last_price }}</td>
-                <td>{{ posisition.m2m }}</td>
-                <td>{{ posisition.quantity }}</td>
-                <td>{{ posisition.buy_price }}</td>
-                <td>{{ posisition.sell_price }}</td>
-            </tr>
-        </tbody>
-    </table>
-</ng-container>
-</ng-container>
+        <ng-container *ngrxLet="strategy$ as strategy">
+            <ng-container *ngIf="strategy != undefined && strategy.fullname != undefined">
+        
+            <h2 class="text-xl font-bold">
+                Net Positions: {{ strategy.fullname }}
+            </h2>
+            <table class="responsive-table text-dark text-base dark:text-white-light">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>LTP</th>
+                        <th>MTM</th>
+                        <th>Qty Stretagy</th>
+                        <th>Buy</th>
+                        <th>Sell</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let posisition of strategy.positions">
+                        <td>
+                            {{ posisition.tradingsymbol }}
+                        </td>
+                        <td>{{ posisition.last_price }}</td>
+                        <td>{{ posisition.m2m }}</td>
+                        <td>{{ posisition.quantity }}</td>
+                        <td>{{ posisition.buy_price }}</td>
+                        <td>{{ posisition.sell_price }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+        </ng-container>
+    </app-card-body>
+</app-card>
+
