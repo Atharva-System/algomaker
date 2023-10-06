@@ -35,12 +35,14 @@
               "src/assets"
             ],
             "styles": [
-                "src/assets/css/app.css"
+                "src/assets/css/app.css",
+                "src/assets/css/all.min.css"
             ],
             "scripts": [
                 "node_modules/apexcharts/dist/apexcharts.min.js",
                 "node_modules/swiper/swiper-bundle.min.js",
-                "node_modules/easymde/dist/easymde.min.js"
+                "node_modules/easymde/dist/easymde.min.js",
+                "src/assets/js/all.min.js"
             ],
             "allowedCommonJsDependencies": [
                 "apexcharts",

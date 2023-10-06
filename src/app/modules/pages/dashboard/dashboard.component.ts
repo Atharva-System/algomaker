@@ -8,11 +8,12 @@ import { IStrategy, Strategy } from 'src/app/core/models/stretag.model';
 import { Router, RouterModule } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
 import { StrategyService } from 'src/app/core/services/strategy/strategy.service';
+import { TicksboxComponent } from 'src/app/shared/components/ticksbox/ticksbox.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule,ClockComponent,StretagyboxComponent,LetDirective],
+  imports: [CommonModule,ClockComponent,StretagyboxComponent,LetDirective,TicksboxComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })

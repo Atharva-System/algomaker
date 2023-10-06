@@ -17,7 +17,9 @@ export class StrategyService {
   constructor(private api:ApiCallService) 
   {
     this.api.getPnLData().subscribe((res) => {
-      this._strategies.next(res as IStrategy[]);
+      if(res != null && res != undefined){
+        this._strategies.next(res as IStrategy[]);
+      }
     });
   }
 

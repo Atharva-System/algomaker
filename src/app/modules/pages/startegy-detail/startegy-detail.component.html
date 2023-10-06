@@ -1,4 +1,4 @@
-<app-card class="w-full h-full">
+<app-card>
     <app-card-body>
 
         <ng-container *ngrxLet="strategy$ as strategy">
@@ -13,7 +13,7 @@
                         <th>Symbol</th>
                         <th>LTP</th>
                         <th>MTM</th>
-                        <th>Qty Stretagy</th>
+                        <th>Qty Strategy</th>
                         <th>Buy</th>
                         <th>Sell</th>
                     </tr>
@@ -24,7 +24,7 @@
                             {{ posisition.tradingsymbol }}
                         </td>
                         <td [ngClass]="{'text-danger':posisition.ltp < 0,'text-success':posisition.ltp>0}">{{ posisition.ltp }}</td>
-                        <td [ngClass]="{'text-danger':posisition.m2m < 0,'text-success':posisition.m2m>0}">{{ posisition.m2m }}</td>
+                        <td [ngClass]="{'text-danger':posisition.m2m < 0,'text-success':posisition.m2m>0}">{{ posisition.m2m != null || posisition.m2m != undefined ? posisition.m2m : 0 }}</td>
                         <td [ngClass]="{'text-danger':posisition.quantity < 0,'text-success':posisition.quantity>0}">{{ posisition.quantity }}</td>
                         <td [ngClass]="{'text-danger':posisition.buy_price < 0,'text-success':posisition.buy_price>0}">{{ posisition.buy_price }}</td>
                         <td [ngClass]="{'text-danger':posisition.sell_price < 0,'text-success':posisition.sell_price>0}">{{ posisition.sell_price }}</td>
@@ -39,7 +39,7 @@
                 <button class="btn btn-info" (click)="toggleOrderBook()">{{ isOrderBookOpened ? 'Hide Orders' : 'Show Orders' }}</button>
             </div>
 
-            <table class="responsive-table text-dark text-base dark:text-white-light" *ngIf="isOrderBookOpened">
+            <table class="responsive-table text-dark text-base dark:text-white-light mb-3" *ngIf="isOrderBookOpened">
                 <thead>
                     <tr>
                         <th>Time</th>
@@ -53,9 +53,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of strategy.orders">
+                    <tr *ngFor="let order of strategy.orders" [ngClass]="{'bg-danger-dark-light': (order.transaction_type == 'SELL'),'bg-success-dark-light':(order.transaction_type == 'BUY')}">
                         <td>
-                            {{ order.order_timestamp | date }}
+                            {{ order.order_timestamp | date : 'hh:mm:ss' }}
                         </td>
                         <td>
                             {{ order.tradingsymbol }}

@@ -1,0 +1,6 @@
+<div class="py-[6px] px-[10px] bg-white dark:bg-dark shadow-md">
+    <h2 class="font-extrabold text-[0.75rem]">{{ TickName }}</h2>
+    <h2 class="text-[1rem] font-thin" [ngClass]="{'text-success':TickValue > 0,'text-danger':TickValue < 0}">
+        {{ TickValue }}
+    </h2>
+</div>
