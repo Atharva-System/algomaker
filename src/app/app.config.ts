@@ -12,9 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // headlessui
 import { MenuModule } from 'headlessui-angular';
 
-// tippy
-import { NgxTippyModule } from 'ngx-tippy-wrapper';
-
 // apexchart
 import { NgApexchartsModule } from 'ng-apexcharts';
 
@@ -51,7 +48,6 @@ export const appConfig: ApplicationConfig = {
   importProvidersFrom(HttpClientModule),
   importProvidersFrom(BrowserAnimationsModule),
   importProvidersFrom(MenuModule),
-  importProvidersFrom(NgxTippyModule),
   importProvidersFrom(NgApexchartsModule),
   importProvidersFrom(
     NgScrollbarModule

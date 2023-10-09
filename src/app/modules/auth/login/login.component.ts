@@ -5,6 +5,7 @@ import { Message } from 'src/app/core/constants/messages.constants';
 import { Validators as Validation } from "src/app/core/constants/validators.constants";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { TokenService } from 'src/app/core/services/tokenservice/token.service';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
     ]
   }
   
-  constructor(public router: Router,private fb:FormBuilder){
+  constructor(public router: Router,private fb:FormBuilder,private tokenService:TokenService){
     this.createLoginForm();
   }
   
@@ -50,9 +51,9 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.isLoginFormSubmitted = true;
-    console.log(this.loginForm.controls['email'].errors)
     if(this.loginForm.valid)
     {
+      this.tokenService.saveToken('Token')
       this.router.navigate(['/app']);
     }
   }

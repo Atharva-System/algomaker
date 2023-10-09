@@ -27,7 +27,7 @@
             <ng-scrollbar class="relative !h-[calc(100vh-80px)]" appearance="compact">
                 <ul class="relative space-y-0.5 p-4 py-0 font-semibold">
                     <li class="nav-item">
-                        <a routerLink="/apps/chat" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
+                        <a routerLink="/app" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                             <div class="flex items-center">
                                 <svg
                                     class="shrink-0 group-hover:!text-primary"
@@ -97,7 +97,9 @@
                                         </svg>
 
                                         <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark"
-                                            >{{ 'PNL' | translate }}</span
+                                            >
+                                            {{ ('PNL' | translate) || '&nbsp;' }}    
+                                        </span
                                         >
                                     </div>
                                 </a>

@@ -10,12 +10,12 @@ export class ApiCallService {
   constructor(private socket:Socket) {
   }
 
-  getInitialData(){
+  getN_BnTicker(){
     return this.createObserver('ticks');
   }
 
-  getUpdatedData(){
-    return this.createObserver('update');
+  getPnLData(){
+    return this.createObserver('paper-update')
   }
 
   private createObserver(event:string){

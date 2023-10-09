@@ -1,1 +1,87 @@
-<p>startegy-detail works!</p>
+<app-card>
+    <app-card-body>
+
+        <ng-container *ngrxLet="strategy$ as strategy">
+            <ng-container *ngIf="strategy != undefined && strategy.fullname != undefined">
+        
+            <h2 class="text-xl font-bold mb-10">
+                Net Positions: {{ strategy.fullname }}({{ strategy.name }})
+            </h2>
+            <table class="responsive-table text-dark text-base dark:text-white-light">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>LTP</th>
+                        <th>MTM</th>
+                        <th>Qty Strategy</th>
+                        <th>Buy</th>
+                        <th>Sell</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let posisition of strategy.positions">
+                        <td>
+                            {{ posisition.tradingsymbol }}
+                        </td>
+                        <td [ngClass]="{'text-danger':posisition.ltp < 0,'text-success':posisition.ltp>0}">{{ posisition.ltp }}</td>
+                        <td [ngClass]="{'text-danger':posisition.m2m < 0,'text-success':posisition.m2m>0}">{{ posisition.m2m != null || posisition.m2m != undefined ? posisition.m2m : 0 }}</td>
+                        <td [ngClass]="{'text-danger':posisition.quantity < 0,'text-success':posisition.quantity>0}">{{ posisition.quantity }}</td>
+                        <td [ngClass]="{'text-danger':posisition.buy_price < 0,'text-success':posisition.buy_price>0}">{{ posisition.buy_price }}</td>
+                        <td [ngClass]="{'text-danger':posisition.sell_price < 0,'text-success':posisition.sell_price>0}">{{ posisition.sell_price }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="flex justify-start items-center gap-10">
+                <h2 class="text-xl font-bold my-10">
+                    Orderbook ({{ getTotalOrders(strategy.orders) }}):: {{ strategy.fullname }}({{ strategy.name }})
+                    
+                </h2>
+                <button class="btn btn-info" (click)="toggleOrderBook()">{{ isOrderBookOpened ? 'Hide Orders' : 'Show Orders' }}</button>
+            </div>
+
+            <table class="responsive-table text-dark text-base dark:text-white-light mb-3" *ngIf="isOrderBookOpened">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Symbol</th>
+                        <th>Side</th>
+                        <th>Type</th>
+                        <th>Stretagy</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of strategy.orders" [ngClass]="{'text-danger': (order.transaction_type == 'SELL'),'bg-success-dark-light':(order.transaction_type == 'BUY')}">
+                        <td>
+                            {{ order.order_timestamp | date : 'hh:mm:ss' }}
+                        </td>
+                        <td>
+                            {{ order.tradingsymbol }}
+                        </td>
+                        <td>
+                            {{ order.transaction_type }}
+                        </td>
+                        <td>
+                            {{ order.order_type }}
+                        </td>
+                        <td>
+                            {{ strategy.fullname }}
+                        </td>
+                        <td>
+                            {{ order.quantity }}
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            {{ order.status }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+        </ng-container>
+    </app-card-body>
+</app-card>
