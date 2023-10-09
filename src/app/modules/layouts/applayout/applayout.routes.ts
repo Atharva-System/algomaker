@@ -12,7 +12,7 @@ export const AppRoutes:Routes = [
                 loadChildren: () => import("../../pages/dashboard/dashboard.routes").then(m => m.dashboardRoutes)
             },
             {
-                path:'Stragtegy/:name',
+                path:'Stragtegy/:platform/:accountId/:name/:full_name/:ts',
                 loadChildren: () => import("../../pages/startegy-detail/strategy-detail.routes").then(m => m.startegyDetailRoutes)
             }
         ]

@@ -7,5 +7,5 @@
     <app-tickbox [TickName]="'Nifty Bank'" [TickValue]="bankniftyTicker"></app-tickbox>
 </div>
 <div class="grid grid-cols-5 gap-5 xl:grid-cols-5" *ngrxLet="strategies$ as stgs">
-    <app-stretagybox *ngFor="let strategy of stgs" [strategy]="strategy" (click)="navigateToStrategyDetail(strategy.fullname)"></app-stretagybox>
+    <app-stretagybox *ngFor="let strategy of stgs" [strategy]="strategy" (click)="navigateToStrategyDetail(strategy)"></app-stretagybox>
 </div>

@@ -45,8 +45,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }))
   }
 
-  navigateToStrategyDetail(name:string){
-    this.router.navigate(['/app/Stragtegy',name])
+  navigateToStrategyDetail(strategy:IStrategy){
+    this.router.navigate(['/app/Stragtegy',strategy.platform,strategy.accountId,strategy.name,strategy.fullname,0])
   }
 
   ngOnDestroy(): void {

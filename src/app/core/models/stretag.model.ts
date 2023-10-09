@@ -2,6 +2,7 @@ import { IOrder } from "./order.model";
 import { IPosition } from "./position.model";
 
 export interface IStrategy{
+    _id:string;
     accountId:string;
     fullname:string;
     name: string;
@@ -15,6 +16,7 @@ export interface IStrategy{
 }
 
 export class Strategy implements IStrategy {
+    _id:string;
     accountId:string;
     fullname:string;
     name: string;
@@ -26,6 +28,7 @@ export class Strategy implements IStrategy {
     totalAbs: number;
     username:string;
     constructor(){
+        this._id = '';
         this.accountId = '';
         this.fullname = '';
         this.name = '';

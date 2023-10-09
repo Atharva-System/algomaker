@@ -18,12 +18,25 @@ import { IOrder } from 'src/app/core/models/order.model';
 })
 export class StartegyDetailComponent implements OnInit {
   strategy$:Observable<IStrategy> = new Observable<IStrategy>();
-  strategyName:string = '';
+  fullname:string = '';
+  name:string = '';
+  accountId:string = '';
+  platform:string = '';
+  ts:string='';
+
   isOrderBookOpened:boolean = false;
 
   constructor(private route:ActivatedRoute,private service:StrategyService){
+    debugger
     this.route.params.subscribe(res => {
-      this.service.setStrategy(res['name']);
+      this.fullname = res['full_name'];
+      this.name = res['name'];
+      this.accountId = res['accountId'];
+      this.platform = res['platform'];
+      this.ts = res['ts'];
+      this.service.setStrategy(res['full_name']);
+      
+      this.service.getStratagy(this.platform,this.accountId,this.fullname,this.name,this.ts);
     })
     this.strategy$ = this.service.strategy$.pipe(map(res => {
       return res;

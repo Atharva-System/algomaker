@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { IStrategy, Strategy } from '../../models/stretag.model';
 import { ApiCallService } from '../api-call/api-call.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class StrategyService {
   private _strategy:BehaviorSubject<IStrategy> = new BehaviorSubject<IStrategy>(new Strategy());
   public strategy$:Observable<IStrategy> = this._strategy.asObservable();
 
-  constructor(private api:ApiCallService) 
+  constructor(private api:ApiCallService,private http:HttpClient) 
   {
     this.api.getPnLData().subscribe((res) => {
       if(res != null && res != undefined){
@@ -35,5 +37,11 @@ export class StrategyService {
     })
   }
 
+  getStratagy(platform:string,accountId:string,full_name:string,name:string,ts:string){
+    debugger
+    this.http.get(`${environment.apiUrl}/positions/${platform}/${accountId}/${full_name}/${name}/${ts}`).subscribe(res => {
+      console.log(res);
+    })
+  }
 
 }

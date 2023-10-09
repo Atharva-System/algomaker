@@ -53,7 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of strategy.orders" [ngClass]="{'bg-danger-dark-light': (order.transaction_type == 'SELL'),'bg-success-dark-light':(order.transaction_type == 'BUY')}">
+                    <tr *ngFor="let order of strategy.orders" [ngClass]="{'text-danger': (order.transaction_type == 'SELL'),'bg-success-dark-light':(order.transaction_type == 'BUY')}">
                         <td>
                             {{ order.order_timestamp | date : 'hh:mm:ss' }}
                         </td>
