@@ -27,7 +27,6 @@ export class StartegyDetailComponent implements OnInit {
   isOrderBookOpened:boolean = false;
 
   constructor(private route:ActivatedRoute,private service:StrategyService){
-    debugger
     this.route.params.subscribe(res => {
       this.fullname = res['full_name'];
       this.name = res['name'];

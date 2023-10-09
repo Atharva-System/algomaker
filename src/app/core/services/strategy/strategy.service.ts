@@ -38,7 +38,6 @@ export class StrategyService {
   }
 
   getStratagy(platform:string,accountId:string,full_name:string,name:string,ts:string){
-    debugger
     this.http.get(`${environment.apiUrl}/positions/${platform}/${accountId}/${full_name}/${name}/${ts}`).subscribe(res => {
       console.log(res);
     })
