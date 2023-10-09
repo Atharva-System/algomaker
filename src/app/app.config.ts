@@ -12,21 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // headlessui
 import { MenuModule } from 'headlessui-angular';
 
-// apexchart
-import { NgApexchartsModule } from 'ng-apexcharts';
-
 // perfect-scrollbar
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
-// highlightjs
-import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { Title } from '@angular/platform-browser';
-
-// sortable
-import { SortablejsModule } from '@dustfoundation/ngx-sortablejs';
-
-// modal
-import { ModalModule } from 'angular-custom-modal';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 
@@ -48,26 +36,11 @@ export const appConfig: ApplicationConfig = {
   importProvidersFrom(HttpClientModule),
   importProvidersFrom(BrowserAnimationsModule),
   importProvidersFrom(MenuModule),
-  importProvidersFrom(NgApexchartsModule),
   importProvidersFrom(
     NgScrollbarModule
   ),
   importProvidersFrom(SocketIoModule.forRoot(config)),
-  importProvidersFrom(SortablejsModule),
-  importProvidersFrom(ModalModule),
-  importProvidersFrom(HighlightModule),
-  Title,
-        {
-            provide: HIGHLIGHT_OPTIONS,
-            useValue: {
-                coreLibraryLoader: () => import('highlight.js/lib/core'),
-                languages: {
-                    json: () => import('highlight.js/lib/languages/json'),
-                    typescript: () => import('highlight.js/lib/languages/typescript'),
-                    xml: () => import('highlight.js/lib/languages/xml'),
-                },
-            },
-        },
+  Title
   ]
 };
 
